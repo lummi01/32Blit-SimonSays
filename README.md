@@ -1,1 +1,1 @@
-# 32Blit Simon says
+# 32Blit Simon Says
