@@ -168,7 +168,7 @@ void update(uint32_t time)
                         s.mem[s.number] = 1 + (blit::random() % 4);
                         s.number = 0;
                         state = 2;
-                        delay = 10;
+                        delay = 20;
                     }
                 }
                 else 
@@ -190,6 +190,7 @@ void update(uint32_t time)
                 channels[1].trigger_attack();
                 channels[1].frequency = 500 + (150 * bp.number);
                 s.number++;
+                delay = 2;
             }
             else
             {
@@ -217,6 +218,8 @@ void update(uint32_t time)
             bp.blend = 255;
             bp.dblend = 0;
             bp.number = 0;
+            
+            channels[1].trigger_release();
         }
         if (state == 0 && buttons & Button::A)
         {
@@ -232,11 +235,11 @@ void update(uint32_t time)
             {
                 s.mem[i] = 0;
             }
-
+            
             channels[1].waveforms   = Waveform::SINE;
             channels[1].frequency   = 0;
             channels[1].attack_ms   = 5;
-            channels[1].decay_ms    = 240;
+            channels[1].decay_ms    = 200;
             channels[1].sustain     = 0;
             channels[1].release_ms  = 5;
 
